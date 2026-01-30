@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5MD6TCHCCB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5MD6TCHCCB');
+</script>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
+  />
+  <title>Lovingly Framed</title>
+
+  <style>
+    :root{
+      --primary:#1a1a1a;
+      --secondary:#d4af37;
+      --light:#f8f8f8;
+      --dark:#111;
+      --gray:#888;
+      --border:#e0e0e0;
+      --radius-sm:4px;
+      --radius-md:8px;
+      --radius-lg:12px;
+      --shadow-sm:0 2px 4px rgba(0,0,0,.05);
+      --shadow-md:0 4px 12px rgba(0,0,0,.08);
+      --shadow-lg:0 8px 24px rgba(0,0,0,.1);
+      --transition:all .3s ease;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html,body{height:100%;}
+
+    body{
+      font-family:'Segoe UI', system-ui, -apple-system, sans-serif;
+      background:#fff;
+      color:var(--primary);
+      line-height:1.6;
+      font-weight:400;
+    }
+
+    .container{
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+
+    /* Header */
+    .header{
+      background:#fff;
+      border-bottom:1px solid var(--border);
+      position:sticky;
+      top:0;
+      z-index:100;
+      padding:16px 0;
+    }
+
+    .header-content{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .logo{
+      font-size:24px;
+      font-weight:700;
+      color:var(--primary);
+      text-decoration:none;
+      letter-spacing:-0.5px;
+    }
+
+    .logo span{
+      color:var(--secondary);
+    }
+
+    .nav{
+      display:flex;
+      gap:32px;
+      align-items:center;
+    }
+
+    .nav-link{
+      color:var(--primary);
+      text-decoration:none;
+      font-weight:500;
+      font-size:15px;
+      transition:var(--transition);
+      position:relative;
+      padding:8px 0;
+    }
+
+    .nav-link:hover{
+      color:var(--secondary);
+    }
+
+    .nav-link.active::after{
+      content:'';
+      position:absolute;
+      bottom:0;
+      left:0;
+      right:0;
+      height:2px;
+      background:var(--secondary);
+    }
+
+    .contact-info{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-size:14px;
+      color:var(--gray);
+    }
+
+    .phone{
+      color:var(--primary);
+      font-weight:500;
+      text-decoration:none;
+    }
+
+    /* Hero Section */
+    .hero{
+      padding:60px 0;
+      text-align:center;
+      background:linear-gradient(135deg, #f8f8f8 0%, #fff 100%);
+    }
+
+    .hero h1{
+      font-size:48px;
+      font-weight:700;
+      margin-bottom:16px;
+      line-height:1.2;
+      letter-spacing:-1px;
+    }
+
+    .hero p{
+      font-size:18px;
+      color:var(--gray);
+      max-width:600px;
+      margin:0 auto 32px;
+    }
+
+    /* Categories Grid */
+    .categories{
+      padding:80px 0;
+      background:#fff;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:32px;
+      font-weight:700;
+      margin-bottom:48px;
+      position:relative;
+    }
+
+    .section-title::after{
+      content:'';
+      position:absolute;
+      bottom:-16px;
+      left:50%;
+      transform:translateX(-50%);
+      width:60px;
+      height:3px;
+      background:var(--secondary);
+    }
+
+    .categories-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+      gap:30px;
+      margin-top:40px;
+    }
+
+    .category-card{
+      background:#fff;
+      border-radius:var(--radius-lg);
+      overflow:hidden;
+      box-shadow:var(--shadow-md);
+      transition:var(--transition);
+      cursor:pointer;
+      position:relative;
+    }
+
+    .category-card:hover{
+      transform:translateY(-8px);
+      box-shadow:var(--shadow-lg);
+    }
+
+    .category-image{
+      width:100%;
+      height:300px;
+      object-fit:cover;
+      display:block;
+    }
+
+    .category-info{
+      padding:24px;
+    }
+
+    .category-title{
+      font-size:20px;
+      font-weight:600;
+      margin-bottom:8px;
+      color:var(--primary);
+    }
+
+    .category-count{
+      font-size:14px;
+      color:var(--gray);
+    }
+
+    /* Products Grid */
+    .products{
+      padding:80px 0;
+      background:#f8f8f8;
+    }
+
+    .products-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
+      gap:30px;
+    }
+
+    .product-card{
+      background:#fff;
+      border-radius:var(--radius-lg);
+      overflow:hidden;
+      box-shadow:var(--shadow-md);
+      transition:var(--transition);
+    }
+
+    .product-image{
+      width:100%;
+      height:400px;
+      object-fit:cover;
+      display:block;
+      background:#f0f0f0;
+    }
+
+    .product-info{
+      padding:20px;
+      text-align:center;
+    }
+
+    .product-name{
+      font-size:16px;
+      font-weight:500;
+      margin-bottom:8px;
+      color:var(--primary);
+    }
+
+    .product-price{
+      font-size:20px;
+      font-weight:700;
+      color:var(--secondary);
+    }
+
+    .price-badge{
+      position:absolute;
+      top:16px;
+      right:16px;
+      background:var(--secondary);
+      color:#fff;
+      padding:8px 16px;
+      border-radius:var(--radius-md);
+      font-weight:600;
+      font-size:16px;
+      z-index:2;
+    }
+
+    /* Contact Section */
+    .contact{
+      padding:80px 0;
+      background:#fff;
+      text-align:center;
+    }
+
+    .contact-content{
+      max-width:600px;
+      margin:0 auto;
+    }
+
+    .contact h2{
+      font-size:32px;
+      font-weight:700;
+      margin-bottom:24px;
+    }
+
+    .contact p{
+      font-size:18px;
+      color:var(--gray);
+      margin-bottom:32px;
+    }
+
+    .whatsapp-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      background:#25D366;
+      color:#fff;
+      padding:16px 32px;
+      border-radius:var(--radius-md);
+      text-decoration:none;
+      font-weight:600;
+      font-size:16px;
+      transition:var(--transition);
+    }
+
+    .whatsapp-btn:hover{
+      background:#128C7E;
+      transform:translateY(-2px);
+    }
+
+    /* Footer */
+    .footer{
+      background:var(--dark);
+      color:#fff;
+      padding:60px 0 30px;
+    }
+
+    .footer-content{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+      gap:40px;
+      margin-bottom:40px;
+    }
+
+    .footer-section h3{
+      font-size:18px;
+      font-weight:600;
+      margin-bottom:20px;
+      color:var(--secondary);
+    }
+
+    .footer-links{
+      list-style:none;
+    }
+
+    .footer-links li{
+      margin-bottom:12px;
+    }
+
+    .footer-links a{
+      color:#ccc;
+      text-decoration:none;
+      transition:var(--transition);
+    }
+
+    .footer-links a:hover{
+      color:var(--secondary);
+    }
+
+    .copyright{
+      text-align:center;
+      padding-top:30px;
+      border-top:1px solid rgba(255,255,255,.1);
+      color:#999;
+      font-size:14px;
+    }
+
+    /* Loading and Hidden States */
+    .hidden{display:none;}
+    .loading{opacity:.5;pointer-events:none;}
+
+    /* Mobile Responsive */
+    @media (max-width:768px){
+      .header-content{
+        flex-direction:column;
+        gap:20px;
+      }
+      
+      .nav{
+        gap:20px;
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+      
+      .hero h1{
+        font-size:36px;
+      }
+      
+      .categories-grid,
+      .products-grid{
+        grid-template-columns:1fr;
+      }
+      
+      .product-image{
+        height:300px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <a href="#" class="logo">Lovingly<span>Framed</span></a>
+        
+        <nav class="nav">
+          <a href="#home" class="nav-link active">الرئيسية</a>
+          <a href="#categories" class="nav-link">الأقسام</a>
+          <a href="#products" class="nav-link">معرض الأعمال</a>
+          <a href="#contact" class="nav-link">اتصل بنا</a>
+        </nav>
+        
+        <div class="contact-info">
+          <span>للتواصل:</span>
+          <a href="tel:+96565022191" class="phone">+965 6502 2191</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container">
+      <h1>لقطات تبقى في الذاكرة للأبد</h1>
+      <p>نقدم لكم أفضل خدمات التصوير الفوتوغرافي وتصميم البومات الذكريات مع إطارات مصنوعة بحب</p>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="categories" id="categories">
+    <div class="container">
+      <h2 class="section-title">أقسامنا</h2>
+      <div class="categories-grid">
+        <div class="category-card" onclick="openCatalog('bridal')">
+          <img src="images/bridal/1.jpg" alt="العروس" class="category-image">
+          <div class="category-info">
+            <h3 class="category-title">العروس</h3>
+            <p class="category-count">13 عمل فني</p>
+          </div>
+        </div>
+        
+        <div class="category-card" onclick="openCatalog('newborn')">
+          <img src="images/newborn/1.jpg" alt="المواليد" class="category-image">
+          <div class="category-info">
+            <h3 class="category-title">المواليد</h3>
+            <p class="category-count">44 عمل فني</p>
+          </div>
+        </div>
+        
+        <div class="category-card" onclick="openCatalog('balloons')">
+          <img src="images/balloons/1.jpg" alt="البالونات" class="category-image">
+          <div class="category-info">
+            <h3 class="category-title">البالونات</h3>
+            <p class="category-count">7 أعمال فنية</p>
+          </div>
+        </div>
+        
+        <div class="category-card" onclick="openCatalog('grad')">
+          <img src="images/grad/1.jpg" alt="التخرج" class="category-image">
+          <div class="category-info">
+            <h3 class="category-title">التخرج</h3>
+            <p class="category-count">6 أعمال فنية</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="products hidden" id="productsView">
+    <div class="container">
+      <h2 class="section-title" id="categoryTitle">معرض الأعمال</h2>
+      <div class="products-grid" id="productsGrid"></div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-content">
+        <h2>تواصل معنا</h2>
+        <p>نحن هنا لمساعدتك في الحفاظ على ذكرياتك الثمينة. اتصل بنا للحصول على استشارة مجانية</p>
+        <a href="https://wa.me/96565022191" class="whatsapp-btn" target="_blank" rel="noopener">
+          تواصل عبر واتساب
+          <svg width="24" height="24" viewBox="0 0 32 32" fill="currentColor">
+            <path d="M16.7 1.1c-7.7 0-14 6.3-14 14 0 2.5.7 4.9 1.9 7L2.6 30.9l9-2c2.1 1.1 4.4 1.7 6.8 1.7 7.7 0 14-6.3 14-14S24.4 1.1 16.7 1.1z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Lovingly Framed</h3>
+          <p>نحن نؤمن بأن كل لحظة تستحق أن تُحفظ في إطار من الحب والإبداع.</p>
+        </div>
+        
+        <div class="footer-section">
+          <h3>روابط سريعة</h3>
+          <ul class="footer-links">
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#categories">الأقسام</a></li>
+            <li><a href="#products">معرض الأعمال</a></li>
+            <li><a href="#contact">اتصل بنا</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>معلومات التواصل</h3>
+          <ul class="footer-links">
+            <li><a href="tel:+96565022191">+965 6502 2191</a></li>
+            <li><a href="https://wa.me/96565022191">واتساب</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>© 2024 Lovingly Framed. جميع الحقوق محفوظة</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+const BRIDAL_COUNT = 13;
+const NEWBORN_COUNT = 44;
+const BALLOONS_COUNT = 7;
+const GRAD_COUNT = 6;
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+/* ===================== PRICES ===================== */
+const PriceBridal   = [11,11,12,12,12,12,12,12,12,12,12,12];
+const PriceNewborn  = [11,11,12,11,11,12.5,11,11,11,11,12,12.5,11,11,11,11,11,12,12,12,12,11,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12]; 
+const PriceBalloons = [10,10,10,10,10,10]; 
+const PriceGrad     = [8,8,10,10,10];
+
+const PRICES = {
+  bridal: PriceBridal,
+  newborn: PriceNewborn,
+  balloons: PriceBalloons,
+  grad: PriceGrad
+};
+/* ================================================= */
+
+const IMAGE_ROOT = "images";
+const EXT = "jpg";
+const START_INDEX = 2;
+
+const LIMITS = {
+  bridal: BRIDAL_COUNT,
+  newborn: NEWBORN_COUNT,
+  balloons: BALLOONS_COUNT,
+  grad: GRAD_COUNT
+};
+
+const CATEGORY_NAMES = {
+  bridal: "العروس",
+  newborn: "المواليد",
+  balloons: "البالونات",
+  grad: "التخرج"
+};
+
+const productsGrid = document.getElementById('productsGrid');
+const productsView = document.getElementById('productsView');
+const categoryTitle = document.getElementById('categoryTitle');
+
+function getPriceFor(cat, imageIndex){
+  const arr = PRICES[cat] || [];
+  const pos = imageIndex - START_INDEX;
+  const v = arr[pos];
+  if(v === null || v === undefined || v === "") return null;
+  return v;
+}
+
+function createProductCard(imageUrl, price, index){
+  const card = document.createElement('div');
+  card.className = 'product-card';
+  
+  const priceBadge = price !== null 
+    ? `<div class="price-badge">${price} د.ك</div>` 
+    : '';
+  
+  card.innerHTML = `
+    ${priceBadge}
+    <img src="${imageUrl}" alt="عمل فني ${index}" class="product-image" loading="lazy">
+    <div class="product-info">
+      <h3 class="product-name">عمل فني #${index}</h3>
+      ${price !== null ? `<div class="product-price">${price} دينار كويتي</div>` : ''}
+    </div>
+  `;
+  
+  return card;
+}
+
+function renderProducts(cat){
+  categoryTitle.textContent = `معرض أعمال ${CATEGORY_NAMES[cat]}`;
+  productsGrid.innerHTML = '';
+  
+  const max = LIMITS[cat] || 0;
+  if(max < START_INDEX) return;
+  
+  for(let i = max; i >= START_INDEX; i--){
+    const price = getPriceFor(cat, i);
+    const imageUrl = `${IMAGE_ROOT}/${cat}/${i}.${EXT}`;
+    const productCard = createProductCard(imageUrl, price, i);
+    productsGrid.appendChild(productCard);
+  }
+  
+  // Scroll to products section
+  document.querySelector('.categories').classList.add('hidden');
+  productsView.classList.remove('hidden');
+  productsView.scrollIntoView({ behavior: 'smooth' });
+}
+
+function openCatalog(cat){
+  renderProducts(cat);
+}
+
+// Smooth scrolling for navigation
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    if(this.getAttribute('href') === '#products') {
+      return;
+    }
+    
+    const targetId = this.getAttribute('href').substring(1);
+    const targetElement = document.getElementById(targetId);
+    
+    if(targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    // Update active nav link
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+// Home link functionality
+document.querySelector('.logo').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.querySelector('.categories').classList.remove('hidden');
+  productsView.classList.add('hidden');
+  document.querySelector('.hero').scrollIntoView({ behavior: 'smooth' });
+  
+  // Update active nav link
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.querySelector('.nav-link[href="#home"]').classList.add('active');
+});
+  </script>
+</body>
+</html>
