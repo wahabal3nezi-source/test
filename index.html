@@ -16,244 +16,223 @@
     :root{
       --primary:#1a1a1a;
       --secondary:#d4af37;
-      --accent: #ffefba; /* لون مكمل للتشويق */
-      --light:#f8f8f8;
-      --dark:#111;
-      --gray:#888;
-      --border:#e0e0e0;
-      --radius-lg:15px;
-      --transition:all .4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      --bg-soft: #fdfbf7;
+      --border:#eee;
+      --radius:12px;
+      --shadow:0 10px 30px rgba(0,0,0,0.08);
     }
 
-    *{box-sizing:border-box;margin:0;padding:0;}
+    *{box-sizing:border-box; margin:0; padding:0;}
     body{
       font-family:'Segoe UI', system-ui, -apple-system, sans-serif;
-      background:#fff;
-      color:var(--primary);
-      line-height:1.6;
+      background:#fff; color:var(--primary); line-height:1.6;
     }
 
-    .container{ max-width:1200px; margin:0 auto; padding:0 20px; }
-
-    /* Header */
+    /* Header - Fixed & Centered */
     .header{
-      background:rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
+      background:rgba(255, 255, 255, 0.98);
       border-bottom: 1px solid var(--border);
-      position:sticky; top:0; z-index:100; padding:12px 0;
+      position:fixed; top:0; left:0; right:0; z-index:1000;
+      padding:15px 0; text-align:center;
     }
-
-    .header-content{ display:flex; justify-content:space-between; align-items:center; }
-
+    .header-content { display: block; }
     .logo{
-      font-size:26px; font-weight:800; color:var(--primary);
-      text-decoration:none; letter-spacing:-1px;
+      font-size:28px; font-weight:800; color:var(--primary);
+      text-decoration:none; display:block; margin-bottom:10px;
     }
     .logo span{ color:var(--secondary); }
-
-    .nav{ display:flex; gap:25px; align-items:center; }
+    .nav{ display:flex; gap:20px; justify-content:center; }
     .nav-link{
       color:var(--primary); text-decoration:none; font-weight:600;
-      font-size:15px; transition:var(--transition);
+      font-size:14px; transition: 0.3s;
     }
     .nav-link:hover{ color:var(--secondary); }
 
-    /* Hero Section - تصميم مشوق */
+    /* Hero Section - New Background */
     .hero{
-      padding:100px 0;
-      text-align:center;
-      background: linear-gradient(135deg, #ffffff 0%, #fff5d7 50%, #ffffff 100%);
-      border-bottom: 1px solid #f0f0f0;
+      margin-top: 100px; padding:120px 20px; text-align:center;
+      background-color: #fdfbf7;
+      background-image: radial-gradient(#d4af37 0.5px, transparent 0.5px), radial-gradient(#d4af37 0.5px, #fdfbf7 0.5px);
+      background-size: 20px 20px;
+      background-position: 0 0, 10px 10px;
     }
-    .hero h1{
-      font-size:52px; font-weight:900; margin-bottom:20px;
-      background: linear-gradient(45deg, #1a1a1a, #d4af37);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .hero-box {
+      background: rgba(255, 255, 255, 0.9);
+      display: inline-block; padding: 40px; border-radius: var(--radius);
+      box-shadow: var(--shadow);
     }
-    .hero p{ font-size:20px; color:#555; max-width:700px; margin:0 auto; }
+    .hero h1{ font-size:42px; margin-bottom:15px; color: var(--primary); }
 
-    /* Category Cards */
-    .categories{ padding:60px 0; }
-    .section-title{ text-align:center; font-size:32px; margin-bottom:40px; }
-    
-    .categories-grid{
-      display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:25px;
-    }
+    /* Grid Logic */
+    .container{ max-width:1100px; margin:0 auto; padding:40px 20px; }
+    .grid { display:grid; gap:25px; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); }
 
-    .category-card{
-      background:#fff; border-radius:var(--radius-lg); overflow:hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition:var(--transition); cursor:pointer;
+    /* Category Card - Square 1:1 */
+    .category-card {
+      cursor:pointer; transition: 0.4s; text-align:center;
     }
-    .category-card:hover{ transform:translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+    .category-card:hover { transform: translateY(-5px); }
+    .img-square-frame {
+      width: 100%; aspect-ratio: 1 / 1; 
+      border-radius: var(--radius); overflow: hidden; margin-bottom: 10px;
+      box-shadow: var(--shadow);
+    }
+    .img-square-frame img { width:100%; height:100%; object-fit:cover; }
+    .cat-name { font-weight: 700; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; }
 
-    /* إطارات الصور - تثبيت الحجم 16:9 عمودي */
-    .image-frame {
-      width: 100%;
-      aspect-ratio: 9 / 16; /* فريم ثابت للصور الطولية */
-      background: #f0f0f0;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    /* Product Card - Portrait 16:9 */
+    .product-card {
+      background:#fff; border-radius:var(--radius); overflow:hidden;
+      box-shadow: var(--shadow); position: relative;
     }
-    .category-image, .product-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* يملأ الفريم بالكامل */
-      display: block;
+    .img-portrait-frame {
+      width: 100%; aspect-ratio: 9 / 16;
+      background: #f9f9f9; display: flex; align-items: center;
     }
+    .img-portrait-frame img { width:100%; height:100%; object-fit: contain; }
 
-    /* Products View */
-    .back-btn {
-      display: inline-block; margin-bottom: 20px; padding: 10px 20px;
+    /* Download Bar */
+    .download-bar {
+      padding: 12px; background: #fff; border-top: 1px solid #eee;
+      display: flex; justify-content: center;
+    }
+    .btn-download {
       background: var(--primary); color: #fff; text-decoration: none;
-      border-radius: 30px; font-size: 14px; cursor: pointer; transition: 0.3s;
+      padding: 8px 20px; border-radius: 20px; font-size: 13px;
+      transition: 0.3s; cursor: pointer; border: none;
     }
-    .back-btn:hover { background: var(--secondary); }
+    .btn-download:hover { background: var(--secondary); }
 
-    .products-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:25px;
-    }
-    .product-card { 
-        background:#fff; border-radius:var(--radius-lg); overflow:hidden; 
-        box-shadow: 0 5px 15px rgba(0,0,0,0.05); position: relative;
-    }
-
-    .price-tag {
-        position: absolute; top: 15px; left: 15px;
-        background: rgba(212, 175, 55, 0.9); color: white;
-        padding: 5px 15px; border-radius: 20px; font-weight: bold;
+    /* Floating Back Button */
+    .floating-back {
+      position: fixed; bottom: 30px; right: 30px;
+      background: var(--secondary); color: white;
+      width: 50px; height: 50px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      cursor: pointer; z-index: 2000; text-decoration: none; font-weight: bold;
     }
 
     /* Contact Section */
-    .contact{ padding:80px 0; background:#fafafa; text-align:center; }
+    .contact{ padding:60px 20px; text-align:center; background:#1a1a1a; color:white; }
     .whatsapp-btn{
-      display:inline-flex; align-items:center; gap:10px;
-      background:#25D366; color:#fff; padding:18px 40px;
-      border-radius:50px; text-decoration:none; font-weight:700; transition:var(--transition);
+      display:inline-block; margin-top: 20px; background:#25D366; color:#fff; 
+      padding:15px 35px; border-radius:30px; text-decoration:none; font-weight:700;
     }
-    .whatsapp-btn:hover{ transform:scale(1.05); background:#1eb956; }
 
-    /* Utility */
-    .hidden{ display:none; }
-    
-    @media (max-width:768px){
-      .hero h1{ font-size:32px; }
-      .nav{ gap:15px; }
-      .nav-link { font-size: 13px; }
-    }
+    .hidden { display: none; }
+    @media (max-width:600px) { .hero h1 { font-size: 28px; } }
   </style>
 </head>
 
 <body>
   <header class="header">
-    <div class="container">
-      <div class="header-content">
-        <a href="#" class="logo" onclick="showHome(event)">Lovingly<span>.framed</span></a>
-        <nav class="nav">
-          <a href="#home" class="nav-link" onclick="showHome(event)">الرئيسية</a>
-          <a href="#categories" class="nav-link" onclick="showCategories(event)">الأقسام</a>
-          <a href="#contact" class="nav-link">تواصل معنا</a>
-        </nav>
-      </div>
+    <div class="header-content">
+      <a href="#" class="logo" onclick="showHome(event)">Lovingly<span>.framed</span></a>
+      <nav class="nav">
+        <a href="#home" class="nav-link" onclick="showHome(event)">الرئيسية</a>
+        <a href="#categories" class="nav-link" onclick="showCategories(event)">الأقسام</a>
+        <a href="#contact" class="nav-link">تواصل معنا</a>
+      </nav>
     </div>
   </header>
 
-  <div id="main-content">
+  <div id="main-view">
     <section class="hero" id="home">
-      <div class="container">
-        <h1>لحظاتك تستحق أن تُخلّد</h1>
-        <p>نصنع من ذكرياتكم لوحات فنية، بإطارات صُممت بكل حب لتناسب فخامة مناسباتكم.</p>
+      <div class="hero-box">
+        <h1>Lovingly.framed</h1>
+        <p>نحول أجمل لحظاتكم إلى ذكريات ملموسة بإطارات استثنائية</p>
       </div>
     </section>
 
-    <section class="categories" id="categories">
-      <div class="container">
-        <h2 class="section-title">اكتشف مجموعاتنا</h2>
-        <div class="categories-grid">
-          <div class="category-card" onclick="openCatalog('bridal')">
-            <div class="image-frame"><img src="images/bridal/1.jpg" class="category-image"></div>
-            <div style="padding:20px; text-align:center;"><h3>قسم العروس</h3></div>
-          </div>
-          <div class="category-card" onclick="openCatalog('newborn')">
-            <div class="image-frame"><img src="images/newborn/1.jpg" class="category-image"></div>
-            <div style="padding:20px; text-align:center;"><h3>قسم المواليد</h3></div>
-          </div>
-          <div class="category-card" onclick="openCatalog('balloons')">
-            <div class="image-frame"><img src="images/balloons/1.jpg" class="category-image"></div>
-            <div style="padding:20px; text-align:center;"><h3>قسم البالونات</h3></div>
-          </div>
-          <div class="category-card" onclick="openCatalog('grad')">
-            <div class="image-frame"><img src="images/grad/1.jpg" class="category-image"></div>
-            <div style="padding:20px; text-align:center;"><h3>قسم التخرج</h3></div>
-          </div>
+    <section class="container" id="categories">
+      <div class="grid">
+        <div class="category-card" onclick="openCatalog('bridal')">
+          <div class="img-square-frame"><img src="images/bridal/1.jpg"></div>
+          <div class="cat-name">Bridal</div>
+        </div>
+        <div class="category-card" onclick="openCatalog('newborn')">
+          <div class="img-square-frame"><img src="images/newborn/1.jpg"></div>
+          <div class="cat-name">Newborn</div>
+        </div>
+        <div class="category-card" onclick="openCatalog('balloons')">
+          <div class="img-square-frame"><img src="images/balloons/1.jpg"></div>
+          <div class="cat-name">Balloons</div>
+        </div>
+        <div class="category-card" onclick="openCatalog('grad')">
+          <div class="img-square-frame"><img src="images/grad/1.jpg"></div>
+          <div class="cat-name">Grad</div>
         </div>
       </div>
     </section>
   </div>
 
-  <section class="categories hidden" id="productsView">
+  <div id="catalog-view" class="hidden">
     <div class="container">
-      <span class="back-btn" onclick="showCategories(event)">← العودة للأقسام</span>
-      <h2 class="section-title" id="categoryTitle">اسم القسم</h2>
-      <div class="products-grid" id="productsGrid"></div>
+      <h2 id="cat-title" style="text-align:center; margin-bottom:40px; text-transform:uppercase;"></h2>
+      <div class="grid" id="product-grid"></div>
     </div>
-  </section>
+    <a href="#" class="floating-back" onclick="showCategories(event)">✕</a>
+  </div>
 
   <section class="contact" id="contact">
-    <div class="container">
-      <h2>هل لديك استفسار؟</h2>
-      <p style="margin-bottom:30px">تواصل معنا مباشرة عبر واتساب لطلب التصميم الخاص بك</p>
-      <a href="https://wa.me/96565022191" class="whatsapp-btn" target="_blank">تواصل معنا الآن</a>
-    </div>
+    <h2>تواصل معنا</h2>
+    <p>للحجز أو الاستفسار عن التصاميم الخاصة</p>
+    <a href="https://wa.me/96565022191" class="whatsapp-btn" target="_blank">واتساب مباشر</a>
   </section>
 
   <script>
     const LIMITS = { bridal: 13, newborn: 44, balloons: 7, grad: 6 };
-    const PRICES = {
-      bridal: [11,11,12,12,12,12,12,12,12,12,12,12],
-      newborn: [11,11,12,11,11,12.5,11,11,11,11,12,12.5,11,11,11,11,11,12,12,12,12,11,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
-      balloons: [10,10,10,10,10,10],
-      grad: [8,8,10,10,10]
-    };
-    const NAMES = { bridal: "العروس", newborn: "المواليد", balloons: "البالونات", grad: "التخرج" };
-
+    
     function openCatalog(cat) {
-      document.getElementById('main-content').classList.add('hidden');
-      document.getElementById('productsView').classList.remove('hidden');
-      document.getElementById('categoryTitle').textContent = "معرض أعمال " + NAMES[cat];
+      document.getElementById('main-view').classList.add('hidden');
+      document.getElementById('catalog-view').classList.remove('hidden');
+      document.getElementById('cat-title').textContent = cat;
       
-      const grid = document.getElementById('productsGrid');
+      const grid = document.getElementById('product-grid');
       grid.innerHTML = '';
       
       for(let i = LIMITS[cat]; i >= 2; i--) {
-        const price = PRICES[cat][LIMITS[cat] - i];
+        const imgPath = `images/${cat}/${i}.jpg`;
         const card = document.createElement('div');
         card.className = 'product-card';
         card.innerHTML = `
-          ${price ? `<div class="price-tag">${price} د.ك</div>` : ''}
-          <div class="image-frame">
-            <img src="images/${cat}/${i}.jpg" class="product-image" loading="lazy">
+          <div class="img-portrait-frame">
+            <img src="${imgPath}" id="img-${cat}-${i}">
           </div>
-          <div style="padding:15px; text-align:center; font-weight:bold; color:var(--gray)">عمل رقم #${i}</div>
+          <div class="download-bar">
+            <button class="btn-download" onclick="downloadImage('${imgPath}', '${cat}-${i}.jpg')">حفظ الصورة</button>
+          </div>
         `;
         grid.appendChild(card);
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    function downloadImage(url, filename) {
+      fetch(url)
+        .then(response => response.blob())
+        .then(blob => {
+          const link = document.createElement('a');
+          link.href = URL.createObjectURL(blob);
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+    }
+
     function showCategories(e) {
-      if(e) e.preventDefault();
-      document.getElementById('main-content').classList.remove('hidden');
-      document.getElementById('productsView').classList.add('hidden');
+      e.preventDefault();
+      document.getElementById('main-view').classList.remove('hidden');
+      document.getElementById('catalog-view').classList.add('hidden');
       document.getElementById('categories').scrollIntoView({ behavior: 'smooth' });
     }
 
     function showHome(e) {
-      if(e) e.preventDefault();
-      document.getElementById('main-content').classList.remove('hidden');
-      document.getElementById('productsView').classList.add('hidden');
+      e.preventDefault();
+      document.getElementById('main-view').classList.remove('hidden');
+      document.getElementById('catalog-view').classList.add('hidden');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
