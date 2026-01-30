@@ -17,7 +17,7 @@
       --primary:#1a1a1a;
       --secondary:#d4af37;
       --bg-dots: #fdfbf7;
-      --dark-bg: #1a1a1a;
+      --dark-bg: #111111;
       --radius: 12px;
       --shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
@@ -37,45 +37,56 @@
       background:rgba(255, 255, 255, 0.98);
       border-bottom: 1px solid #eee;
       position:fixed; top:0; left:0; right:0; z-index:1000;
-      padding:15px 0; text-align:center; transition: 0.3s;
+      padding:15px 0; text-align:center;
     }
     .logo{
-      font-size:26px; font-weight:800; color:var(--primary);
-      text-decoration:none; display:inline-block; margin-bottom:5px;
+      font-size:24px; font-weight:800; color:var(--primary);
+      text-decoration:none; display:inline-block;
     }
     .logo span{ color:var(--secondary); }
     
-    .nav{ display:flex; gap:20px; justify-content:center; margin-top: 5px; }
+    .nav{ display:flex; gap:15px; justify-content:center; margin-top: 8px; }
     .nav-link{
       color:var(--primary); text-decoration:none; font-weight:600;
-      font-size:14px; padding: 2px 8px; transition: 0.3s;
+      font-size:13px; padding: 2px 5px; transition: 0.3s;
     }
     .nav-link.active { border-bottom: 2px solid var(--secondary); color: var(--secondary); }
 
-    /* Back Button in Header */
+    /* Back Button - Updated Style & Position */
     .back-btn-nav {
-      position: absolute; left: 20px; top: 50%; transform: translateY(-50%);
-      font-weight: 800; cursor: pointer; color: var(--secondary);
-      font-size: 18px; text-transform: uppercase; display: none;
-      text-decoration: none; border: 1.5px solid var(--secondary);
-      padding: 5px 15px; border-radius: 20px;
+      position: absolute; 
+      right: 15px; 
+      top: 50%; 
+      transform: translateY(-50%);
+      background: var(--secondary); 
+      color: #fff;
+      font-weight: 700; 
+      cursor: pointer;
+      font-size: 12px; 
+      text-transform: uppercase; 
+      display: none;
+      text-decoration: none; 
+      padding: 6px 12px; 
+      border-radius: 50px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      z-index: 1100;
     }
 
     /* Hero Section */
     .hero{ margin-top: 130px; padding:60px 20px; text-align:center; }
     .hero-box {
       background: rgba(255, 255, 255, 0.95);
-      display: inline-block; padding: 50px 30px; border-radius: var(--radius);
-      box-shadow: var(--shadow); max-width: 600px;
+      display: inline-block; padding: 40px 25px; border-radius: var(--radius);
+      box-shadow: var(--shadow); max-width: 550px;
     }
-    .hero-box h2 { color: var(--secondary); font-size: 30px; margin-bottom: 10px; }
-    .hero-box p { font-size: 18px; color: #444; font-weight: 500; }
+    .hero-box h2 { color: var(--secondary); font-size: 28px; margin-bottom: 10px; }
+    .hero-box p { font-size: 17px; color: #444; font-weight: 500; }
 
     /* Grid */
     .container{ max-width:1100px; margin:0 auto; padding:40px 20px; }
     .grid { display:grid; gap:25px; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); }
 
-    /* Category Card - Square */
+    /* Category Card */
     .category-card { cursor:pointer; transition: 0.4s; text-align:center; }
     .category-card:hover { transform: scale(1.02); }
     .img-square-frame {
@@ -83,10 +94,10 @@
       overflow: hidden; margin-bottom: 10px; box-shadow: var(--shadow);
     }
     .img-square-frame img { width:100%; height:100%; object-fit:cover; }
-    .cat-name { font-weight: 800; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; }
+    .cat-name { font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: 1px; }
 
-    /* Catalog View - Dark Mode */
-    #catalog-view { background: #111; min-height: 100vh; width: 100%; padding-top: 100px; }
+    /* Catalog View */
+    #catalog-view { background: var(--dark-bg); min-height: 100vh; width: 100%; padding-top: 100px; }
     #catalog-view .cat-title { color: white; text-align: center; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; }
     
     .product-card { border-radius:var(--radius); overflow:hidden; position: relative; }
@@ -97,16 +108,14 @@
     }
     .img-portrait-frame img { width:100%; height:100%; object-fit: contain; }
 
-    /* Price Badge - Top Right */
     .price-badge {
-      position: absolute; top: 15px; right: 15px;
+      position: absolute; top: 12px; right: 12px;
       background: var(--secondary); color: white;
-      padding: 6px 14px; border-radius: 8px;
-      font-weight: 800; font-size: 14px; z-index: 10;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      padding: 5px 12px; border-radius: 6px;
+      font-weight: 800; font-size: 13px; z-index: 10;
     }
 
-    /* Contact & Social */
+    /* Contact */
     .contact{ padding:60px 20px; text-align:center; background:#fff; border-top: 1px solid #eee; }
     .social-btn {
       display:inline-flex; align-items:center; gap:8px; margin: 10px;
@@ -114,9 +123,13 @@
     }
     .whatsapp-btn{ background:#25D366; color:#fff; }
     .insta-btn { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; }
-    .social-btn:hover { transform: translateY(-3px); opacity: 0.9; }
+    .social-btn:hover { transform: translateY(-3px); }
 
     .hidden { display: none; }
+    @media (max-width: 480px) {
+      .logo { font-size: 20px; }
+      .back-btn-nav { right: 10px; padding: 4px 10px; font-size: 11px; }
+    }
   </style>
 </head>
 
@@ -137,7 +150,7 @@
     <section class="hero" id="home">
       <div class="hero-box">
         <h2>صُنع بحب</h2>
-        <p>نحول أجمل لحظاتكم إلى ذكريات ملموسة بإطارات استثنائية تناسب فخامة مناسباتكم</p>
+        <p>نحول أجمل لحظاتكم إلى ذكريات ملموسة بإطارات استثنائية</p>
       </div>
     </section>
 
@@ -155,9 +168,9 @@
           <div class="img-square-frame"><img src="images/balloons/1.jpg"></div>
           <div class="cat-name">Balloons</div>
         </div>
-        <div class="category-card" onclick="openCatalog('grad')">
+        <div class="category-card" onclick="openCatalog('graduation')">
           <div class="img-square-frame"><img src="images/grad/1.jpg"></div>
-          <div class="cat-name">Grad</div>
+          <div class="cat-name">Graduation</div>
         </div>
       </div>
     </section>
@@ -172,29 +185,25 @@
 
   <section class="contact" id="contact">
     <h2>تواصل معنا</h2>
-    <p>للحجز أو الاستفسار عن التصاميم الخاصة عبر المنصات التالية</p>
+    <p>للحجز أو الاستفسار عن التصاميم الخاصة</p>
     <a href="https://wa.me/96565022191" class="social-btn whatsapp-btn" target="_blank">واتساب مباشر</a>
     <a href="https://www.instagram.com/lovingly.framed/" class="social-btn insta-btn" target="_blank">Instagram</a>
   </section>
 
   <script>
-    // Constants & Prices
     const START_INDEX = 2;
-    const LIMITS = { bridal: 13, newborn: 44, balloons: 7, grad: 6 };
+    const LIMITS = { bridal: 13, newborn: 44, balloons: 7, graduation: 6 }; // Updated Key
     
     const PRICES = {
       bridal:   [11,11,12,12,12,12,12,12,12,12,12,12],
       newborn:  [11,11,12,11,11,12.5,11,11,11,11,12,12.5,11,11,11,11,11,12,12,12,12,11,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
       balloons: [10,10,10,10,10,10],
-      grad:     [8,8,10,10,10]
+      graduation: [8,8,10,10,10] // Updated Key
     };
 
     function openCatalog(cat) {
-      // Toggle Views
       document.getElementById('main-view').classList.add('hidden');
       document.getElementById('catalog-view').classList.remove('hidden');
-      
-      // Update Header
       document.getElementById('main-nav').classList.add('hidden');
       document.getElementById('btn-back').style.display = 'block';
       
@@ -202,12 +211,13 @@
       const grid = document.getElementById('product-grid');
       grid.innerHTML = '';
       
-      // Render Images & Prices
       const limit = LIMITS[cat];
+      const folderName = (cat === 'graduation') ? 'grad' : cat; // Path mapping
+
       for(let i = limit; i >= START_INDEX; i--) {
         const priceIndex = i - START_INDEX;
         const price = PRICES[cat][priceIndex];
-        const imgPath = `images/${cat}/${i}.jpg`;
+        const imgPath = `images/${folderName}/${i}.jpg`;
         
         const card = document.createElement('div');
         card.className = 'product-card';
@@ -226,11 +236,8 @@
       if(e) e.preventDefault();
       document.getElementById('main-view').classList.remove('hidden');
       document.getElementById('catalog-view').classList.add('hidden');
-      
-      // Reset Header
       document.getElementById('main-nav').classList.remove('hidden');
       document.getElementById('btn-back').style.display = 'none';
-      
       const catSection = document.getElementById('categories');
       window.scrollTo({ top: catSection.offsetTop - 120, behavior: 'smooth' });
     }
@@ -239,15 +246,11 @@
       if(e) e.preventDefault();
       document.getElementById('main-view').classList.remove('hidden');
       document.getElementById('catalog-view').classList.add('hidden');
-      
-      // Reset Header
       document.getElementById('main-nav').classList.remove('hidden');
       document.getElementById('btn-back').style.display = 'none';
-      
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Scroll Spy for Nav Highlighting
     window.addEventListener('scroll', () => {
       const catSection = document.getElementById('categories');
       const navHome = document.getElementById('nav-home');
