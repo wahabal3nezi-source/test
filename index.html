@@ -16,132 +16,112 @@
     :root{
       --primary:#1a1a1a;
       --secondary:#d4af37;
-      --bg-soft: #fdfbf7;
-      --border:#eee;
-      --radius:12px;
-      --shadow:0 10px 30px rgba(0,0,0,0.08);
+      --bg-dots: #fdfbf7;
+      --dark-bg: #222222;
+      --radius: 12px;
+      --shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
 
     *{box-sizing:border-box; margin:0; padding:0;}
     body{
       font-family:'Segoe UI', system-ui, -apple-system, sans-serif;
-      background:#fff; color:var(--primary); line-height:1.6;
+      background-color: var(--bg-dots);
+      background-image: radial-gradient(#d4af37 0.5px, transparent 0.5px), radial-gradient(#d4af37 0.5px, var(--bg-dots) 0.5px);
+      background-size: 20px 20px;
+      background-position: 0 0, 10px 10px;
+      color:var(--primary); line-height:1.6;
     }
 
-    /* Header - Fixed & Centered */
+    /* Header */
     .header{
       background:rgba(255, 255, 255, 0.98);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid #eee;
       position:fixed; top:0; left:0; right:0; z-index:1000;
-      padding:15px 0; text-align:center;
+      padding:12px 0; text-align:center;
     }
-    .header-content { display: block; }
     .logo{
-      font-size:28px; font-weight:800; color:var(--primary);
-      text-decoration:none; display:block; margin-bottom:10px;
+      font-size:24px; font-weight:800; color:var(--primary);
+      text-decoration:none; display:block; margin-bottom:5px;
     }
     .logo span{ color:var(--secondary); }
     .nav{ display:flex; gap:20px; justify-content:center; }
     .nav-link{
       color:var(--primary); text-decoration:none; font-weight:600;
-      font-size:14px; transition: 0.3s;
+      font-size:14px; padding: 2px 8px; transition: 0.3s;
     }
-    .nav-link:hover{ color:var(--secondary); }
+    .nav-link.active { border-bottom: 2px solid var(--secondary); color: var(--secondary); }
 
-    /* Hero Section - New Background */
-    .hero{
-      margin-top: 100px; padding:120px 20px; text-align:center;
-      background-color: #fdfbf7;
-      background-image: radial-gradient(#d4af37 0.5px, transparent 0.5px), radial-gradient(#d4af37 0.5px, #fdfbf7 0.5px);
-      background-size: 20px 20px;
-      background-position: 0 0, 10px 10px;
+    /* Back Button in Header */
+    .back-nav {
+      position: absolute; right: 20px; top: 50%; transform: translateY(-50%);
+      font-weight: bold; cursor: pointer; color: var(--secondary); display: none;
     }
+
+    /* Hero Section */
+    .hero{ margin-top: 110px; padding:80px 20px; text-align:center; }
     .hero-box {
-      background: rgba(255, 255, 255, 0.9);
-      display: inline-block; padding: 40px; border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      background: rgba(255, 255, 255, 0.95);
+      display: inline-block; padding: 50px 30px; border-radius: var(--radius);
+      box-shadow: var(--shadow); max-width: 600px;
     }
-    .hero h1{ font-size:42px; margin-bottom:15px; color: var(--primary); }
+    .hero-box h2 { color: var(--secondary); font-size: 30px; margin-bottom: 10px; }
+    .hero-box p { font-size: 18px; color: #444; font-weight: 500; }
 
-    /* Grid Logic */
+    /* Container & Grid */
     .container{ max-width:1100px; margin:0 auto; padding:40px 20px; }
     .grid { display:grid; gap:25px; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); }
 
-    /* Category Card - Square 1:1 */
-    .category-card {
-      cursor:pointer; transition: 0.4s; text-align:center;
-    }
-    .category-card:hover { transform: translateY(-5px); }
+    /* Categories - Square */
+    .category-card { cursor:pointer; transition: 0.4s; text-align:center; }
+    .category-card:hover { transform: scale(1.02); }
     .img-square-frame {
-      width: 100%; aspect-ratio: 1 / 1; 
-      border-radius: var(--radius); overflow: hidden; margin-bottom: 10px;
-      box-shadow: var(--shadow);
+      width: 100%; aspect-ratio: 1 / 1; border-radius: var(--radius); 
+      overflow: hidden; margin-bottom: 10px; box-shadow: var(--shadow);
     }
     .img-square-frame img { width:100%; height:100%; object-fit:cover; }
-    .cat-name { font-weight: 700; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; }
+    .cat-name { font-weight: 800; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; }
 
-    /* Product Card - Portrait 16:9 */
+    /* Catalog View - Dark Mode */
+    #catalog-view { background: var(--dark-bg); min-height: 100vh; position: absolute; width: 100%; top: 100px; z-index: 500; }
+    #catalog-view .cat-title { color: white; text-align: center; margin-bottom: 30px; padding-top: 20px; }
+    
     .product-card {
-      background:#fff; border-radius:var(--radius); overflow:hidden;
-      box-shadow: var(--shadow); position: relative;
+      border-radius:var(--radius); overflow:hidden; background: transparent;
     }
     .img-portrait-frame {
       width: 100%; aspect-ratio: 9 / 16;
-      background: #f9f9f9; display: flex; align-items: center;
+      background: #1a1a1a; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
     .img-portrait-frame img { width:100%; height:100%; object-fit: contain; }
 
-    /* Download Bar */
-    .download-bar {
-      padding: 12px; background: #fff; border-top: 1px solid #eee;
-      display: flex; justify-content: center;
-    }
-    .btn-download {
-      background: var(--primary); color: #fff; text-decoration: none;
-      padding: 8px 20px; border-radius: 20px; font-size: 13px;
-      transition: 0.3s; cursor: pointer; border: none;
-    }
-    .btn-download:hover { background: var(--secondary); }
-
-    /* Floating Back Button */
-    .floating-back {
-      position: fixed; bottom: 30px; right: 30px;
-      background: var(--secondary); color: white;
-      width: 50px; height: 50px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      cursor: pointer; z-index: 2000; text-decoration: none; font-weight: bold;
-    }
-
     /* Contact Section */
-    .contact{ padding:60px 20px; text-align:center; background:#1a1a1a; color:white; }
+    .contact{ padding:60px 20px; text-align:center; background:#fff; border-top: 1px solid #eee; }
     .whatsapp-btn{
-      display:inline-block; margin-top: 20px; background:#25D366; color:#fff; 
-      padding:15px 35px; border-radius:30px; text-decoration:none; font-weight:700;
+      display:inline-block; margin-top: 15px; background:#25D366; color:#fff; 
+      padding:12px 30px; border-radius:30px; text-decoration:none; font-weight:700;
     }
 
     .hidden { display: none; }
-    @media (max-width:600px) { .hero h1 { font-size: 28px; } }
   </style>
 </head>
 
 <body>
   <header class="header">
-    <div class="header-content">
-      <a href="#" class="logo" onclick="showHome(event)">Lovingly<span>.framed</span></a>
-      <nav class="nav">
-        <a href="#home" class="nav-link" onclick="showHome(event)">الرئيسية</a>
-        <a href="#categories" class="nav-link" onclick="showCategories(event)">الأقسام</a>
-        <a href="#contact" class="nav-link">تواصل معنا</a>
-      </nav>
-    </div>
+    <div id="btn-back" class="back-nav" onclick="showCategories(event)">← رجوع</div>
+    <a href="#" class="logo" onclick="showHome(event)">Lovingly<span>.framed</span></a>
+    <nav class="nav">
+      <a href="#home" id="nav-home" class="nav-link active" onclick="showHome(event)">الرئيسية</a>
+      <a href="#categories" id="nav-cats" class="nav-link" onclick="showCategories(event)">الأقسام</a>
+      <a href="#contact" class="nav-link">تواصل معنا</a>
+    </nav>
   </header>
 
   <div id="main-view">
     <section class="hero" id="home">
       <div class="hero-box">
-        <h1>Lovingly.framed</h1>
-        <p>نحول أجمل لحظاتكم إلى ذكريات ملموسة بإطارات استثنائية</p>
+        <h2>صُنع بحب</h2>
+        <p>نحول أجمل لحظاتكم إلى ذكريات ملموسة بإطارات استثنائية تناسب فخامة مناسباتكم</p>
       </div>
     </section>
 
@@ -165,28 +145,29 @@
         </div>
       </div>
     </section>
+
+    <section class="contact" id="contact">
+      <h2>تواصل معنا</h2>
+      <p>للحجز أو الاستفسار عن التصاميم الخاصة</p>
+      <a href="https://wa.me/96565022191" class="whatsapp-btn" target="_blank">واتساب مباشر</a>
+    </section>
   </div>
 
   <div id="catalog-view" class="hidden">
     <div class="container">
-      <h2 id="cat-title" style="text-align:center; margin-bottom:40px; text-transform:uppercase;"></h2>
+      <h2 id="cat-title" class="cat-title"></h2>
       <div class="grid" id="product-grid"></div>
     </div>
-    <a href="#" class="floating-back" onclick="showCategories(event)">✕</a>
   </div>
-
-  <section class="contact" id="contact">
-    <h2>تواصل معنا</h2>
-    <p>للحجز أو الاستفسار عن التصاميم الخاصة</p>
-    <a href="https://wa.me/96565022191" class="whatsapp-btn" target="_blank">واتساب مباشر</a>
-  </section>
 
   <script>
     const LIMITS = { bridal: 13, newborn: 44, balloons: 7, grad: 6 };
     
+    // Function to open a category
     function openCatalog(cat) {
       document.getElementById('main-view').classList.add('hidden');
       document.getElementById('catalog-view').classList.remove('hidden');
+      document.getElementById('btn-back').style.display = 'block';
       document.getElementById('cat-title').textContent = cat;
       
       const grid = document.getElementById('product-grid');
@@ -198,10 +179,7 @@
         card.className = 'product-card';
         card.innerHTML = `
           <div class="img-portrait-frame">
-            <img src="${imgPath}" id="img-${cat}-${i}">
-          </div>
-          <div class="download-bar">
-            <button class="btn-download" onclick="downloadImage('${imgPath}', '${cat}-${i}.jpg')">حفظ الصورة</button>
+            <img src="${imgPath}" loading="lazy">
           </div>
         `;
         grid.appendChild(card);
@@ -209,32 +187,44 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function downloadImage(url, filename) {
-      fetch(url)
-        .then(response => response.blob())
-        .then(blob => {
-          const link = document.createElement('a');
-          link.href = URL.createObjectURL(blob);
-          link.download = filename;
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        });
-    }
-
+    // Function to show Categories
     function showCategories(e) {
-      e.preventDefault();
+      if(e) e.preventDefault();
       document.getElementById('main-view').classList.remove('hidden');
       document.getElementById('catalog-view').classList.add('hidden');
-      document.getElementById('categories').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('btn-back').style.display = 'none';
+      
+      // Scroll to the images of categories
+      const catSection = document.getElementById('categories');
+      window.scrollTo({ top: catSection.offsetTop - 100, behavior: 'smooth' });
     }
 
+    // Function to show Home
     function showHome(e) {
-      e.preventDefault();
+      if(e) e.preventDefault();
       document.getElementById('main-view').classList.remove('hidden');
       document.getElementById('catalog-view').classList.add('hidden');
+      document.getElementById('btn-back').style.display = 'none';
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    // Update Nav Active State on Scroll
+    window.addEventListener('scroll', () => {
+      const homeSection = document.getElementById('home');
+      const catSection = document.getElementById('categories');
+      const navHome = document.getElementById('nav-home');
+      const navCats = document.getElementById('nav-cats');
+      
+      const scrollPos = window.scrollY + 150;
+
+      if (scrollPos >= catSection.offsetTop) {
+        navHome.classList.remove('active');
+        navCats.classList.add('active');
+      } else {
+        navCats.classList.remove('active');
+        navHome.classList.add('active');
+      }
+    });
   </script>
 </body>
 </html>
